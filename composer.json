@@ -6,18 +6,21 @@
 		"log",
 		"loggly"
 	],
-	"homepage": "https://github.com/spacedealer/yii2-loggly",
+	"homepage": "https://github.com/achertovsky/yii2-loggly",
 	"type": "yii2-extension",
 	"license": "BSD-3-Clause",
 	"authors": [
 		{
 			"name": "Dirk Adler",
 			"email": "adler@spacedealer.de"
+		},
+		{
+			"name": "Alexander Chertovsky"
 		}
 	],
 	"support": {
-		"issues": "https://github.com/spacedealer/yii2-loggly/issues",
-		"source": "https://github.com/spacedealer/yii2-loggly"
+		"issues": "https://github.com/achertovsky/yii2-loggly/issues",
+		"source": "https://github.com/achertovsky/yii2-loggly"
 	},
 	"require": {
 		"ext-curl": "*",
@@ -28,7 +31,7 @@
 	},
 	"autoload": {
 		"psr-4": {
-			"spacedealer\\loggly\\": "src/"
+			"achertovsky\\loggly\\": "src/"
 		}
 	}
 }
