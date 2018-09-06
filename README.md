@@ -21,13 +21,13 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```
-php composer.phar require --prefer-dist spacedealer/yii2-loggly "*"
+php composer.phar require --prefer-dist achertovsky/yii2-loggly "*"
 ```
 
 or add
 
 ```
-"spacedealer/yii2-loggly": "*"
+"achertovsky/yii2-loggly": "*"
 ```
 
 to the require section of your `composer.json` file.
@@ -46,6 +46,7 @@ Once the extension is installed, simply modify your application configuration as
 			'tags' => ['console', 'staging']
 			'enableIp' => false,
 			'enableTrail' => true,
+			'enableTrace' => false,
 		],
 	],
 ],
