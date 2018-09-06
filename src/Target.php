@@ -244,4 +244,4 @@ class Target extends \yii\log\Target
             curl_close($this->_curl);
         }
     }
-} 
+}
