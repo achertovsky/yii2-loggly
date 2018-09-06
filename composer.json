@@ -1,5 +1,5 @@
 {
-	"name": "spacedealer/yii2-loggly",
+	"name": "achertovsky/yii2-loggly",
 	"description": "Use loggly cloud log management service as log target within Yii2 apps.",
 	"keywords": [
 		"yii2",
