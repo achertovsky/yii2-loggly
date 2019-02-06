@@ -179,9 +179,9 @@ class Target extends \yii\log\Target
     public function formatMessage($message)
     {
         list($text, $level, $category, $timestamp, $traces) = $message;
-        if ($message instanceof \Exception) {
-            $text = $message->getMessage();
-            $traces = $message->getTrace();
+        if ($message[0] instanceof \Exception) {
+            $text = $message[0]->getMessage();
+            $traces = $message[0]->getTrace();
         }
         $level = Logger::getLevelName($level);
         $msg = [
