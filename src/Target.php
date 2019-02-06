@@ -179,6 +179,10 @@ class Target extends \yii\log\Target
     public function formatMessage($message)
     {
         list($text, $level, $category, $timestamp, $traces) = $message;
+        if ($message instanceof \Exception) {
+            $text = $message->getMessage();
+            $traces = $message->getTrace();
+        }
         $level = Logger::getLevelName($level);
         $msg = [
             'timestamp' => date('Y/m/d H:i:s', $timestamp),
