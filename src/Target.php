@@ -17,8 +17,9 @@
 
 namespace achertovsky\loggly;
 
-use yii\base\InvalidConfigException;
+use Yii;
 use yii\log\Logger;
+use yii\base\InvalidConfigException;
 
 /**
  * Class Target
@@ -192,6 +193,10 @@ class Target extends \yii\log\Target
             'category' => $category,
             'message' => $text,
         ];
+        $debug = Yii::$app->getModule('debug');
+        if (!is_null($debug)) {
+            $msg['tag'] = $debug->logTarget->tag;
+        }
         if (!is_null($code)) {
             $msg['code'] = $code;
         }
