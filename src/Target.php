@@ -179,9 +179,11 @@ class Target extends \yii\log\Target
     public function formatMessage($message)
     {
         list($text, $level, $category, $timestamp, $traces) = $message;
+        $code = null;
         if ($message[0] instanceof \Exception) {
             $text = $message[0]->getMessage();
             $traces = $message[0]->getTrace();
+            $code = $message[0]->getCode();
         }
         $level = Logger::getLevelName($level);
         $msg = [
@@ -190,6 +192,9 @@ class Target extends \yii\log\Target
             'category' => $category,
             'message' => $text,
         ];
+        if (!is_null($code)) {
+            $msg['code'] = $code;
+        }
         if ($this->enableIp) {
             $msg['ip'] = isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : '0.0.0.0';
         }
