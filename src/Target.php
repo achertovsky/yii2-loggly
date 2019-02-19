@@ -44,12 +44,6 @@ class Target extends \yii\log\Target
     public $baseUrl = 'https://logs-01.loggly.com';
 
     /**
-     * @var string Path to cert file. If not set bundled cert.pem is used.
-     * @see https://www.loggly.com/docs/rsyslog-tls-configuration/
-     */
-    public $cert;
-
-    /**
      * @var bool whether ips are logged. disabled by default.
      */
     public $enableIp = false;
@@ -110,14 +104,6 @@ class Target extends \yii\log\Target
         // validate customer token
         if (!is_string($this->customerToken) || strlen($this->customerToken) !== 36) {
             throw new InvalidConfigException("Loggly customer token must be a valid 36 character string");
-        }
-
-        // init certificate
-        if ($this->cert === null) {
-            $this->cert = __DIR__ . '/cert.pem';
-        }
-        if (!file_exists($this->cert)) {
-            throw new InvalidConfigException("Certificate file '{$this->cert}' not found.");
         }
 
         // init trail id
@@ -244,7 +230,6 @@ class Target extends \yii\log\Target
         curl_setopt($this->_curl, CURLOPT_POST, 1);
         curl_setopt($this->_curl, CURLOPT_SSL_VERIFYHOST, 2);
         curl_setopt($this->_curl, CURLOPT_SSL_VERIFYPEER, true);
-        curl_setopt($this->_curl, CURLOPT_CAINFO, $this->cert);
 
         return $this->_curl;
     }

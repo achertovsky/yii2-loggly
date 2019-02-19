@@ -149,15 +149,6 @@ class Target extends \PHPUnit_Framework_TestCase
         ]);
     }
 
-    /**
-     * @expectedException \yii\base\InvalidConfigException
-     */
-    public function testInvalidCert()
-    {
-        new \spacedealer\loggly\Target([
-            'cert' => 'wrong.file',
-        ]);
-    }
 
     /**
      * Test default message push.
