@@ -181,7 +181,7 @@ class Target extends \yii\log\Target
         ];
         $debug = Yii::$app->getModule('debug');
         if (!is_null($debug)) {
-            $msg['tag'] = $debug->logTarget->tag;
+            $msg['debug_tag'] = $debug->logTarget->tag;
         }
         if (!is_null($code)) {
             $msg['code'] = $code;
