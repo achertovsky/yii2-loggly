@@ -20,6 +20,7 @@ namespace achertovsky\loggly;
 use Yii;
 use yii\log\Logger;
 use yii\base\InvalidConfigException;
+use yii\helpers\Json;
 
 /**
  * Class Target
@@ -171,6 +172,9 @@ class Target extends \yii\log\Target
             $text = $message[0]->getMessage();
             $traces = $message[0]->getTrace();
             $code = $message[0]->getCode();
+        }
+        if (is_array($message[0])) {
+            $text = Json::encode($message[0]);
         }
         $level = Logger::getLevelName($level);
         $msg = [
