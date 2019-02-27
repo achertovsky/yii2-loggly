@@ -133,11 +133,6 @@ class Target extends \yii\log\Target
      */
     public function export()
     {
-        if ($this->finishRequest && function_exists('fastcgi_finish_request')) {
-            session_write_close();
-            fastcgi_finish_request();
-        }
-
         $ch = $this->initCurl();
 
         // process messages
