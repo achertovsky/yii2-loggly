@@ -96,6 +96,13 @@ class Target extends \yii\log\Target
     private $_url;
 
     /**
+     * IP that gonna be used when $_SERVER['REMOTE_ADDR'] aint set
+     *
+     * @var string
+     */
+    public $cliIp = '0.0.0.0';
+
+    /**
      * Validate config and init.
      *
      * @throws \yii\base\InvalidConfigException
@@ -186,7 +193,7 @@ class Target extends \yii\log\Target
             $msg['code'] = $code;
         }
         if ($this->enableIp) {
-            $msg['ip'] = isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : '0.0.0.0';
+            $msg['ip'] = isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : $this->cliIp;
         }
         if ($this->enableTrail) {
             $msg['trail'] = $this->trail;
